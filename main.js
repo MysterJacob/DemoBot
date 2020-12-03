@@ -6,7 +6,6 @@ const config = JSON.parse(fs.readFileSync("config.json"));
 
 bot.commands= new discord.Collection();
 
-
 function loadCommands(){
     fs.readdir(config.commandsLocation,(err,files)=>{
         files.forEach(file=>{
@@ -40,7 +39,6 @@ bot.on("ready",()=>{
 
 bot.on("message",(msg)=>{
     if(msg.content.startsWith(config.prefix)){
-
         const userInput = msg.content.slice(config.prefix.length);
         const fullArgs = userInput.split(" ");
         const commandName = fullArgs[0];
