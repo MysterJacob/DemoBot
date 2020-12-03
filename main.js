@@ -6,18 +6,36 @@ const config = JSON.parse(fs.readFileSync("config.json"));
 
 bot.commands= new discord.Collection();
 
-bot.on("ready",()=>{
+
+function loadCommands(){
     fs.readdir(config.commandsLocation,(err,files)=>{
         files.forEach(file=>{
+            
             const names = file.split(".");
             const name = names[0];
+            console.log("Loading command:" + name);
             const command = require(config.commandsLocation+"/"+name);
             bot.commands.set(command.help.names.toString(),command);
             
         })
         
     })
-    
+}
+function loadModules(){
+    fs.readdir(config.modulesLocation,(err,files)=>{
+        files.forEach(file=>{
+            const names = file.split(".");
+            const name = names[0];
+            console.log("Loading module:" + name);
+            const module = require(config.modulesLocation+"/"+name);
+            module.run(bot,config);
+        })
+        
+    })
+}
+bot.on("ready",()=>{
+    loadCommands();
+    loadModules();
 })
 
 bot.on("message",(msg)=>{
