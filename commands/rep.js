@@ -9,6 +9,7 @@ module.exports.run = function(msg,bot,args){
    
     let rep = customUserData.getUserData(user.id).reputation || 0;
     const tag = user.tag;
+    rep = Math.round(rep*1000)/1000
     msg.reply("Reputacja użytkownika "+user.tag.slice(0,tag.indexOf("#"))+" jest równa "+rep);
     customUserData.setUserData(user.id,"reputation",rep);
 }
