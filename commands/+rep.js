@@ -8,7 +8,8 @@ module.exports.run = function(msg,bot,args){
     if(user == msg.author){
         return msg.reply("Nie możesz sam dodać sobie repa!");
     }
-    if(customUserData.getUserData(msg.author.id)["usedRep"]){
+    const data =customUserData.getUserData(msg.author.id)["usedRep"];
+    if(data == undefined || data == false){
         let rep = customUserData.getUserData(user.id).reputation || 0;
         const tag = user.tag;
     
