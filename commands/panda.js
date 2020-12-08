@@ -1,6 +1,5 @@
 const discord = require("discord.js");
 const https = require('https');
-const { join } = require("path");
 
 
 module.exports.run = function(msg,bot,arg){
