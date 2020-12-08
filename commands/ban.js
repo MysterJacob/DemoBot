@@ -4,7 +4,7 @@ module.exports.run = function(msg,bot,args){
         return msg.reply("Podaj użytkownika");
     }
     const user = msg.mentions.users.first()
-    if(!user.banable){return msg.reply("That użytkownik can not be zbanowany.")};
+    if(!user.bannable){return msg.reply("That użytkownik can not be zbanowany.")};
     user.ban()
     msg.reply("Zbanowany");
 }

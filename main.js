@@ -38,7 +38,6 @@ bot.on("ready",()=>{
 })
 
 bot.on("message",(msg)=>{
-    
     if(msg.content.startsWith(config.prefix)){
         const userInput = msg.content.slice(config.prefix.length);
         const fullArgs = userInput.split(" ");
