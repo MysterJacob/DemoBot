@@ -5,7 +5,7 @@ module.exports.run = async function(bot,config){
         
         try{
             
-            if(date.getHours() == 21 && date.getMinutes() == 41){
+            if(date.getHours() == 21 && date.getMinutes() == 37){
                 console.log(date.getHours())
                 console.log(date.getMinutes())
                 //Papajus.dll
