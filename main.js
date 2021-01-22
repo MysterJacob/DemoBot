@@ -35,6 +35,7 @@ function loadModules(){
 bot.on("ready",()=>{
     loadCommands();
     loadModules();
+    bot.channels.cache
 })
 
 bot.on("message",(msg)=>{
