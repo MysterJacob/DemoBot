@@ -4,7 +4,7 @@ const https = require('https');
 
 module.exports.run = function(msg,bot,arg){
     //https://www.twilio.com/blog/2017/08/http-requests-in-node-js.html
-    //Dog fact
+    //panda fact
     https.get('https://some-random-api.ml/facts/panda', (resp) => {
     let data = '';
         resp.on('data', (chunk) => {

@@ -29,7 +29,7 @@ module.exports.run = function(msg,bot,args){
     }else{
         const minutesToUse = 59 - diffMins
         const hoursToUse = 23 - diffHrs
-        msg.reply("Możesz użyć tej komendy dopiero za "+hoursToUse.toString()+" godzin i "+minutesToUse.toString()+" minut.")
+        msg.reply("Możesz użyć tej komendy dopiero za "+hoursToUse.toString()+" godzin i "+minutesToUse.toString()+" minut :clock1: .")
     }
 
 
