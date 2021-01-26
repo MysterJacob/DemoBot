@@ -49,7 +49,6 @@ bot.on("ready",()=>{
         }
     })
     */
-   bot.guilds.cache.get("743481870787936347").members.cache.get("369093898695606273").
 })
 
 bot.on("message",(msg)=>{
