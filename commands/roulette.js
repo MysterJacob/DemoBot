@@ -1,6 +1,6 @@
 module.exports.run = function(msg,bot,args){ 
     msg.reply("Pamiętaj jeżeli przegrasz zostanie zbanowany! Napisz ``TAK``, aby potwierdzić");
-    
+    const member = msg.member
     const channel = msg.channel
     //https://discordjs.guide/popular-topics/collectors.html
     const filter = m => m.author.id == msg.author.id;
@@ -14,15 +14,22 @@ module.exports.run = function(msg,bot,args){
         if(content == "tak"){
             channel.send(m.author.tag +" *napina rewolwer*")
             setTimeout(()=>{
-                const random = Math.floor(Math.random()*6)
-                if(random == 1){
+                const random = Math.random()
+                if(Math.floor(random*6) != 1){
                     channel.send("*strzał*")
-                    channel.send(m.author.tag +" *nie żyje*")
-                    try{
-                        msg.member.ban()
-                    }catch(error){
-                        channel.send("Wygląda na to że nie moge cie zbanować... :thinking: ")
-                    }
+                    
+                    if(Math.floor(random*100)<= 90){
+                        const randomrole = member.roles.cache.random()
+                        channel.send("Strzał trafił w role "+randomrole.name)
+                        member.roles.remove(randomrole)
+                    }else{
+                        channel.send(m.author.tag +" *nie żyje*")
+                        try{
+                            msg.member.kick()
+                        }catch(error){
+                            channel.send("Wygląda na to że nie moge cie zbanować... :thinking: ")
+                        }
+                    }               
                 }else{
                     channel.send("*Tick*")
                     channel.send("*Tym razem przeżyłeś*")

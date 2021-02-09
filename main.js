@@ -52,12 +52,14 @@ bot.on("ready",()=>{
 })
 
 bot.on("message",(msg)=>{
+    
     if(msg.content.startsWith(config.prefix)){
+        
         const userInput = msg.content.slice(config.prefix.length);
         const fullArgs = userInput.split(" ");
         const commandName = fullArgs[0];
         const arg = fullArgs.slice(1);
-        const command = bot.commands.find(n=>n.help.names.indexOf(commandName) != -1);
+        const command = bot.commands.find(c=>c.help.names.includes(commandName))
         if(command != null){
             command.run(msg,bot,arg);
         }
