@@ -1,3 +1,4 @@
+const rankup = require("../modules/rankup")
 module.exports.run = function(msg,bot,args){ 
     msg.reply("Pamiętaj jeżeli przegrasz zostanie zbanowany! Napisz ``TAK``, aby potwierdzić");
     const member = msg.member
@@ -15,13 +16,12 @@ module.exports.run = function(msg,bot,args){
             channel.send(m.author.tag +" *napina rewolwer*")
             setTimeout(()=>{
                 const random = Math.random()
-                if(Math.floor(random*2) == 1){
+                if(Math.floor(random*100) >= 45){
                     channel.send("*strzał*")
                     
                     if(Math.floor(random*100)<= 90){
-                        const randomrole = member.roles.cache.random()
-                        channel.send("Strzał trafił w role "+randomrole.name)
-                        member.roles.remove(randomrole)
+                        const lastrole = rankup.rankdown(member); 
+                        channel.send("Strzał trafił w role "+lastrole.name)
                     }else{
                         channel.send(m.author.tag +" *nie żyje*")
                         try{
@@ -31,8 +31,11 @@ module.exports.run = function(msg,bot,args){
                         }
                     }               
                 }else{
+                    
+                    const newrang = rankup.rankup(member); 
                     channel.send("*Tick*")
                     channel.send("*Tym razem przeżyłeś*")
+                    channel.send("Dostałeś range "+newrang.name)
                 }
             },1000*4)
         }else{
