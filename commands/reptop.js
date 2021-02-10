@@ -16,16 +16,18 @@ module.exports.run = function(msg,bot,args){
             }
         })
         const embed = new discord.MessageEmbed()
-        const sorted = reputations.sort()
+        const sorted = reputations.sort().reverse()
         
         embed.setTitle("Tabela reputacji")
         embed.setColor("#fcba03")
-        
+        let index = 1
         sorted.forEach(su=>{
+
             const userID = leaderboard.get(su)
             const user =  msg.guild.members.cache.find(m=>m.id == userID)
             console.log(user)
-            embed.addField(user.user.tag,su)
+            embed.addField(index+". "+user.user.tag,su)
+            index+=1
         })
         msg.channel.send(embed)
     });
