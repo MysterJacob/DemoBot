@@ -15,7 +15,7 @@ module.exports.run = function(msg,bot,args){
             channel.send(m.author.tag +" *napina rewolwer*")
             setTimeout(()=>{
                 const random = Math.random()
-                if(Math.floor(random*6) != 1){
+                if(Math.floor(random*2) == 1){
                     channel.send("*strzał*")
                     
                     if(Math.floor(random*100)<= 90){

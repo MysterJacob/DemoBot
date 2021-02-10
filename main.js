@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const bot = new discord.Client();
 const config = JSON.parse(fs.readFileSync("config.json"));
-
+bot.config = config
 bot.commands = new discord.Collection();
 function loadCommands(){
     fs.readdir(config.commandsLocation,(err,files)=>{
@@ -52,7 +52,7 @@ bot.on("ready",()=>{
 })
 
 bot.on("message",(msg)=>{
-    
+   
     if(msg.content.startsWith(config.prefix)){
         
         const userInput = msg.content.slice(config.prefix.length);

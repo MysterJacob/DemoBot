@@ -1,7 +1,7 @@
 const fs = require("fs");
 const config = JSON.parse(fs.readFileSync("config.json"))
 module.exports.run = function(bot,config){
-    fs.readdir(config.modulesLocation,(err,files)=>{
+    fs.readdir(bot.config.modulesLocation,(err,files)=>{
 
     });
 }
