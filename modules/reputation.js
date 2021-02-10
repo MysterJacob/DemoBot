@@ -7,7 +7,7 @@ module.exports.run = function(bot,conf){
         fs.readdir("./userData/",(err,files)=>{
             files.forEach((file)=>{
                 const userID = files.splice(".")[0]
-                const rep = userData.getUserData(userID)["reputation"] || 0
+                let rep = userData.getUserData(userID)["reputation"] || 0
                 rep -= rep/15
                 userData.setUserData(userData,"reputation",rep);
             })
