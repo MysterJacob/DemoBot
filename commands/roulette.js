@@ -16,7 +16,7 @@ module.exports.run = function(msg,bot,args){
             channel.send(m.author.tag +" *napina rewolwer*")
             setTimeout(()=>{
                 const random = Math.random()
-                if(Math.floor(random*100) >= 45){
+                if(Math.floor(random*100) >= 51){
                     channel.send("*strzał*")
                     
                     if(Math.floor(random*100)<= 90){
@@ -24,8 +24,10 @@ module.exports.run = function(msg,bot,args){
                         if(lastrole == undefined){
                             channel.send("Strzał trafił w role "+lastrole.name)
                         }else{
-                            channel.send(m.author.tag +" *nie żyje*")
-                            msg.member.kick()
+                            const newrang = rankup.rankup(member); 
+                            channel.send("*Tick*")
+                            channel.send("*Tym razem przeżyłeś*")
+                            channel.send("Dostałeś range "+newrang.name)
                         }
                         
                     }else{
