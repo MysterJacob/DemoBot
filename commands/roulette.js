@@ -17,11 +17,12 @@ module.exports.run = function(msg,bot,args){
             setTimeout(()=>{
                 const random = Math.random()
                 if(Math.floor(random*100) >= 51){
-                    channel.send("*strzał*")
+                    
                     
                     if(Math.floor(random*100)<= 90){
                         const lastrole = rankup.rankdown(member); 
-                        if(lastrole == undefined){
+                        if(lastrole != undefined){
+                            channel.send("*strzał*")
                             channel.send("Strzał trafił w role "+lastrole.name)
                         }else{
                             const newrang = rankup.rankup(member); 
