@@ -16,7 +16,7 @@ module.exports.run = function(msg,bot,args){
             channel.send(m.author.tag +" *napina rewolwer*")
             setTimeout(()=>{
                 const random = Math.random()
-                if(Math.floor(random*100) >= 51){
+                if(Math.floor(random*100) >= 45){
                     
                     
                     if(Math.floor(random*100)<= 90){
