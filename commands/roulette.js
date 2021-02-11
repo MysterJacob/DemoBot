@@ -21,7 +21,13 @@ module.exports.run = function(msg,bot,args){
                     
                     if(Math.floor(random*100)<= 90){
                         const lastrole = rankup.rankdown(member); 
-                        channel.send("Strzał trafił w role "+lastrole.name)
+                        if(lastrole == undefined){
+                            channel.send("Strzał trafił w role "+lastrole.name)
+                        }else{
+                            channel.send(m.author.tag +" *nie żyje*")
+                            msg.member.kick()
+                        }
+                        
                     }else{
                         channel.send(m.author.tag +" *nie żyje*")
                         try{
