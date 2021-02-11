@@ -34,6 +34,7 @@ module.exports.run = function(msg,bot,args){
                     }else{
                         channel.send(m.author.tag +" *nie żyje*")
                         try{
+                            msg.member.send("https://discord.gg/Avd5J3C4h3")
                             msg.member.kick()
                         }catch(error){
                             channel.send("Wygląda na to że nie moge cie zbanować... :thinking: ")
