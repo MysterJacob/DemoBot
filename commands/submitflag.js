@@ -1,5 +1,7 @@
 const crypto = require("crypto");
-const flags = ["cb2cd20bc71737d6c274445717c0d4e713d1b711ef76d37cb3e71021d475926d"]
+const fs = require("fs")
+const flagsConfPath = "./flags.json"
+const flagsConfig = JSON.parse(fs.readFileSync(flagsConfPath))
 const ranks = ["809039869417750568","784357047986683915","811220167664205844","809766267019460649","811328451608444928","811329333728641034"]
 function giveRank(Member){
     
@@ -27,15 +29,15 @@ module.exports.run = function(msg,bot,args){
     const md5 = crypto.createHash("sha256")
     md5.update(args[0])
     const hash = md5.digest('hex')
-    if(flags.includes(hash)){
-        flags.splice(hash)
+    if(flagsConfig.flags.includes(hash)){
+        flagsConfig.flags.splice(hash)
         msg.channel.send("You have found a flag! Congrats!");
         const rank = giveRank(msg.member);
-        console.log(rank)
-        msg.channel.send("You've been given a "+rank+" rank!");
+        msg.channel.send("You've been given a "+rank.name+" rank!");
     }else{
         msg.channel.send("Wrong flag :p");
     }
+    fs.writeFileSync(flagsConfPath,JSON.stringify(flagsConfig))
 }
 module.exports.help = {
     "names":["submit","sf"],
