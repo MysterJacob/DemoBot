@@ -2,10 +2,10 @@ const ranks = ["765192629033500692","765578893435469835","778604596632223755","7
 module.exports.run =()=>{}
 module.exports.rankup= (Member)=>{
     for(let i=0;i<ranks.length;i++){
-
+        if(i < ranks.length){
         const roleid = ranks[i]
-        if(!Member.roles.cache.has(roleid)){
-            if(i < ranks.length){
+            if(!Member.roles.cache.has(roleid)){
+                
                 const rankup = Member.guild.roles.cache.find(r => r.id == roleid); 
                 Member.roles.add(rankup)
                 return rankup
