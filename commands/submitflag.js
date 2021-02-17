@@ -28,9 +28,10 @@ module.exports.run = function(msg,bot,args){
     }
     const md5 = crypto.createHash("sha256")
     md5.update(args[0])
-    const hash = md5.digest('hex')
+    let hash = md5.digest('hex')
     if(flagsConfig.flags.includes(hash)){
-        flagsConfig.flags.splice(hash)
+        //|>submit TUBF{1f_numb3r_<_0_d0_u53r_k1ck}
+        flagsConfig.flags = flagsConfig.flags.splice(flagsConfig.flags.indexOf(hash))
         msg.channel.send("You have found a flag! Congrats!");
         const rank = giveRank(msg.member);
         msg.channel.send("You've been given a "+rank.name+" rank!");
