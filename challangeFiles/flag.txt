@@ -1,2 +1,2 @@
-Server has flag here!
+Server has flag here;
 There is some easteregg, try find it!

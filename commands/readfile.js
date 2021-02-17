@@ -7,7 +7,7 @@ module.exports.run = function(msg,bot,args){
     }
     console.log(args[0])
     if(!args[0].includes(":")){
-        const content ="Hey, you need to specify the accesstoken, like this: filename:accesstoken \n\r Here is an exaple ```";
+        const content ="Hey, you need to specify the accesstoken, like this: filename:accesstoken \n\r  Here is an exaple ```test:098f6bcd4621d373cade4e832627b4f6```";
         return msg.reply(content)
     }
     const filename = args[0].split(":")[0]
