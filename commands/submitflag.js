@@ -11,7 +11,7 @@ function giveRank(Member){
             if(Member.roles.cache.has(roleid)){
             
             
-                const rankup = Member.guild.roles.cache.find(r => r.id == ranks[i]); 
+                const rankup = Member.guild.roles.cache.find(r => r.id == ranks[i+1]); 
                 Member.roles.add(rankup)
                 return rankup
             }
