@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const fs = require("fs")
 const flagsConfPath = "./flags.json"
-const flagsConfig = JSON.parse(fs.readFileSync(flagsConfPath))
+
 const ranks = ["809039869417750568","784357047986683915","811220167664205844","809766267019460649","811328451608444928","811329333728641034"]
 function giveRank(Member){
     
@@ -29,9 +29,10 @@ module.exports.run = function(msg,bot,args){
     const md5 = crypto.createHash("sha256")
     md5.update(args[0])
     let hash = md5.digest('hex')
+    let flagsConfig = JSON.parse(fs.readFileSync(flagsConfPath))
     if(flagsConfig.flags.includes(hash)){
         //|>submit TUBF{1f_numb3r_<_0_d0_u53r_k1ck}
-        flagsConfig.flags = flagsConfig.flags.splice(flagsConfig.flags.indexOf(hash))
+        flagsConfig.flags.splice(flagsConfig.flags.indexOf(hash))
         msg.channel.send("You have found a flag! Congrats!");
         const rank = giveRank(msg.member);
         msg.channel.send("You've been given a "+rank.name+" rank!");
