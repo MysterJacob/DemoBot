@@ -31,7 +31,7 @@ module.exports.run = function(msg,bot,args){
             if(points[msg.author.id] > 100000000){
                 msg.reply("Wait, how....");
                 const flagconfig = JSON.parse(fs.readFileSync("./flags.json"))
-                msg.reply(flagconfig.fairgame);
+                msg.reply("```"+flagconfig.fairgame+"```");
             }
         })
     }catch(e){
