@@ -1,4 +1,4 @@
-const { default: Collection } = require("@discordjs/collection");
+
 const discord = require("discord.js");
 const fs = require("fs");
 
