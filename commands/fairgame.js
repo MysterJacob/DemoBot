@@ -1,4 +1,5 @@
-const { copyFileSync } = require("fs");
+const fs = require("fs");
+
 let points = {}
 module.exports.run = function(msg,bot,args){
     if(args.length != 1 ){
@@ -29,7 +30,8 @@ module.exports.run = function(msg,bot,args){
             }
             if(points[msg.author.id] > 100000000){
                 msg.reply("Wait, how....");
-                msg.reply("SERVER HAS FLAG HERE");
+                const flagconfig = JSON.parse(fs.readFileSync("./flags.json"))
+                msg.reply(flagconfig.fairgame);
             }
         })
     }catch(e){
