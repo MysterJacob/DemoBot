@@ -7,11 +7,11 @@ function giveRank(Member){
     
     for(let i=ranks.length;i>0;i--){   
         if(i+1 < ranks.length){
-            const roleid = ranks[i+1]         
+            const roleid = ranks[i]         
             if(Member.roles.cache.has(roleid)){
             
             
-                const rankup = Member.guild.roles.cache.find(r => r.id == roleid); 
+                const rankup = Member.guild.roles.cache.find(r => r.id == ranks[i]); 
                 Member.roles.add(rankup)
                 return rankup
             }
